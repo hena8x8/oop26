@@ -28,6 +28,7 @@ public class Polygon {
     }
 
     public BoundingBox boundingBox(){
+        if(points.length == 0) return new BoundingBox( 0, 0, 0, 0);
         float minX = points[0].getX();
         float maxX = points[0].getX();
         float minY = points[0].getY();
@@ -37,6 +38,8 @@ public class Polygon {
         for (Point p : points){
             if(p.getX() < minX) minX = p.getX();
             if(p.getY() < minY) minY = p.getY();
+            if(p.getX() > maxX) maxX = p.getX();
+            if(p.getY() > maxY) maxY = p.getY();
         }
         return new BoundingBox(minX, maxY, maxX - minX, maxY - minY);
     }
