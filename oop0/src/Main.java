@@ -55,16 +55,17 @@ public class Main {
 //        p.setX(100);
 //        System.out.println(s1);
 
-        Point[] points = new Point[S];
-        points[0] = new Point(2.3F , 5.6F);
-        points[1] = new Point(10.5F , 12.4F);
-        points[2] = new Point(15.4F , 72.2);
+        Point[] points = new Point[];
+        points[0] = new Point(2.3F, 5.6F);
+        points[1] = new Point(10.5F, 12.4F);
+        points[2] = new Point(15.4F, 72.2F);
         points[3] = new Point(72.4f, 81.6F);
         points[3] = new Point(162.4f, 51.3F);
 
-        Polygon p1 = new  Polygon(points);
+        Polygon p1 = new Polygon(points);
         System.out.println(p1);
         points[0].setX(0);
         System.out.println(p1);
 
+    }
 }
