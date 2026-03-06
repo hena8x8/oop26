@@ -26,4 +26,18 @@ public class Polygon {
         return String.format(Locale.ENGLISH,
                 "<polygon points=\"%s\"style=\"fill:lime;stroke:purple;stroke-width:3");
     }
+
+    public BoundingBox boundingBox(){
+        float minX = points[0].getX();
+        float maxX = points[0].getX();
+        float minY = points[0].getY();
+        float maxY = points[0].getY();
+
+
+        for (Point p : points){
+            if(p.getX() < minX) minX = p.getX();
+            if(p.getY() < minY) minY = p.getY();
+        }
+        return new BoundingBox(minX, maxY, maxX - minX, maxY - minY);
+    }
 }
