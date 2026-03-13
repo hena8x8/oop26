@@ -78,10 +78,16 @@ public class Main {
 //        System.out.println(p1);
 //        points[0].setX(0);
 //        System.out.println(p1);
-        scene.addPolygon(Polygon.square(new Segment(
+        scene.addShape(Polygon.square(new Segment(
                 new Point(130.0f, 100.0f),
                 new Point(100.0f, 130.0f)
         ), new Style("red", "green", 3.0)));
+
+        scene.addShape(new Elipse(
+                new Point( 100.0f, 100.0f),
+                 20.0f, 50.0f,
+                new Style("blue", "red",3.0)
+        ));
 
         scene.save("out.svg");
         System.out.println(p1.boundingBox());
