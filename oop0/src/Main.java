@@ -1,7 +1,9 @@
+import java.io.IOException;
+
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
 //        System.out.println("Hello World");
 //        Point p = new Point();
 //
@@ -55,27 +57,34 @@ public class Main {
 //        p.setX(100);
 //        System.out.println(s1);
 
-        Point[] points = new Point[];
+        Point[] points = new Point[5];
         points[0] = new Point(2.3F, 5.6F);
         points[1] = new Point(10.5F, 12.4F);
         points[2] = new Point(15.4F, 72.2F);
         points[3] = new Point(72.4f, 81.6F);
-        points[3] = new Point(162.4f, 51.3F);
+        points[4] = new Point(162.4f, 51.3F);
 
         Polygon p1 = new Polygon(points);
 
         Polygon p2 = new Polygon(new Point[]{
-            new Point(),
-                new Point(10, 0),
-                new Point(10, 10)
+            new Point(), new Point(10, 0), new Point(10, 10)
         });
+
+
         SvgScene scene = new SvgScene();
         scene.addPolygon(p1);
         scene.addPolygon(p2);
-        System.out.println(scene.toSv())
+        System.out.println(scene.toSvg());
 //        System.out.println(p1);
 //        points[0].setX(0);
 //        System.out.println(p1);
+        scene.addPolygon(Polygon.square(new Segment(
+                new Point(130.0f, 100.0f),
+                new Point(100.0f, 130.0f)
+        ), new Style("red", "green", 3.0)));
+
+        scene.save("out.svg");
+        System.out.println(p1.boundingBox());
 
     }
 }
