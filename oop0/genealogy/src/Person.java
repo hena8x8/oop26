@@ -21,18 +21,27 @@ public class Person {
 
 
     public Person getYoungerChild(){
-        Iterator<Person> iter = this.children.iterator();
-        Person new = iter.next();
-        Person youngest = now;
+//        Iterator<Person> iter = this.children.iterator();
+//        Person new = iter.next();
+//        Person youngest = now;
+//
+//        while(true){
+//            if(youngest.birthday.compareTo(now.birthday) < 0){
+//                youngest = now;
+//            }
+//            try{ iter.next();
+//            } catch (NoSuchElementException e){
+//                break;
+//            }
+//        }
 
-        while(true){
-            if(youngest.birthday.compareTo(now.birthday) < 0){
-                youngest = now;
+        if( this.children.isEmpty()) return null;
+        Person youngest = children.iterator().next();
+        for (Person person : children){
+            if(youngest.birthday.compareTo(person.birthday) < 0){
+                youngest = person;
             }
-            try{ iter.next();
-            } catch (NoSuchElementException e){
-                break;
-            }
+
         }
         return youngest;
     }

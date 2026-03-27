@@ -33,7 +33,8 @@ public class Main {
         system.out.println(parent.adopt(child));
         system.out.println(parent.adopt(parent));
 
-        System.out.println(people);
+//        System.out.println(people);
+        System.out.println(parent.getYoungerChild());
 
     }
 }
