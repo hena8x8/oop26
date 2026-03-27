@@ -1,7 +1,7 @@
-import java.util.Iterator;
-import java.util.NoSuchElementException;
+import java.time.LocalDate;
+import java.util.*;
 
-public class Person {
+public class Person implements Comparable<Person>{
     private String firstName;
     private String lastName;
     private LocalDate birthday;
@@ -38,13 +38,40 @@ public class Person {
         if( this.children.isEmpty()) return null;
         Person youngest = children.iterator().next();
         for (Person person : children){
-            if(youngest.birthday.compareTo(person.birthday) < 0){
+//            if(youngest.birthday.compareTo(person.birthday) < 0){
+//                youngest = person;
+//            }
+            if(youngest.compareTo(person) > 0){
                 youngest = person;
-            }
+              }
 
         }
         return youngest;
     }
+
+
+    public List<Person> getChildren(){
+//        List<Person> result = new ArrayList<>();
+//        result.addAll(children);
+//
+//        result.sort(Person::compareTo);
+//        return  result;
+
+        return children.stream().sorted().toList();
+    }
+
+
+    public String name(){
+        return String.format("%s %s", firstName, lastName);
+    }
+
+
+
+    @Override
+    public int compareTo(Person other){
+        return this.birthday.compareTo(other.birthday);
+    }
+
 
 
     @Override

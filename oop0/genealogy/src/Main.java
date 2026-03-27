@@ -1,4 +1,6 @@
+import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.List;
 
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
@@ -27,14 +29,25 @@ public class Main {
 
 
         Person parent = people.get(0);
-        Persom child = people.get(1);
+        Person child = people.get(1);
 
-        system.out.println(parent.adopt(child));
-        system.out.println(parent.adopt(child));
-        system.out.println(parent.adopt(parent));
-
+        System.out.println(parent.adopt(child));
+        System.out.println(parent.adopt(child));
+        System.out.println(parent.adopt(parent));
+        Perent.adopt(people.get(2));
 //        System.out.println(people);
         System.out.println(parent.getYoungerChild());
+        System.out.println(perent.getChildren());
+        Family family = new Family();
+//        for(Person person : people){
+//            family.add(person);
+//        }
 
+        family.add(people.get(0));
+        family.add(people.get(1), people.get(2));
+
+
+        Person mike = family.get("Mike Tyson");
+        System.out.println(mike);
     }
 }
