@@ -24,6 +24,15 @@ public class Main {
                 LocalDate.of(1944, 1, 2)
         ));
 
+
+
+        Person parent = people.get(0);
+        Persom child = people.get(1);
+
+        system.out.println(parent.adopt(child));
+        system.out.println(parent.adopt(child));
+        system.out.println(parent.adopt(parent));
+
         System.out.println(people);
 
     }
