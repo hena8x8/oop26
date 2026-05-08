@@ -11,6 +11,7 @@ public class Main {
             //PlantUmlRunner.generateTree(umlData, "output", "test");
             //Person.toBinaryFile(people,"data.bin");
             //List<Person> people2 = Person.fromBinaryFile("data.bin");
+           List<Person> sortedDead = Person.getDeceasedByLifespan(people);
             List<Person> sorted = Person.filterPersonbySubstring(people, "ska");
             sorted.stream().map(Person::name).forEach(System.out::println);
             System.out.println(people);
