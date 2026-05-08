@@ -1,53 +1,31 @@
+import java.io.IOException;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
     public static void main(String[] args) {
-        //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
-        // to see how IntelliJ IDEA suggests fixing it.
-        List<Person> people = new ArrayList<>();
+       try {
+            List<Person> people = Person.fromCsv("family.csv");
+            PlantUmlRunner.setJarPath("/home/student/Pobrane/plantuml-java8-SNAPSHOT.jar");
+            //PlantUmlRunner.generateTree(umlData, "output", "test");
+            //Person.toBinaryFile(people,"data.bin");
+            //List<Person> people2 = Person.fromBinaryFile("data.bin");
+            List<Person> sorted = Person.filterPersonbySubstring(people, "ska");
+            sorted.stream().map(Person::name).forEach(System.out::println);
+            System.out.println(people);
+        } catch (IOException e){
+            System.err.println("Blad dostepu do pliku" + e.getMessage());
+        }
+        PlantUmlRunner.setJarPath("/home/student/Pobrane/plantuml-java8-SNAPSHOT.jar");
+        String umlData = "@startuml\n" +
+                "Alice -> Bob: Authentication Request\n" +
+                "Bob --> Alice: Authentication Response\n" +
+                "\n" +
+                "Alice -> Bob: Another authentication Request\n" +
+                "Alice <-- Bob: Another authentication Response\n" +
+                "@enduml";
+        PlantUmlRunner.generate(umlData, "output", "test");
 
-        people.add(new Person(
-                "Mike",
-                "Tyson",
-                LocalDate.of(1966, 5, 18)
-        ));
-        people.add(new Person(
-                "Anna",
-                "Nowak",
-                LocalDate.of(2002, 4, 10)
-        ));
-        people.add(new Person(
-                "Muhammad",
-                "Ali",
-                LocalDate.of(1944, 1, 2)
-        ));
-
-
-
-        Person parent = people.get(0);
-        Person child = people.get(1);
-
-        System.out.println(parent.adopt(child));
-        System.out.println(parent.adopt(child));
-        System.out.println(parent.adopt(parent));
-        Perent.adopt(people.get(2));
-//        System.out.println(people);
-        System.out.println(parent.getYoungerChild());
-        System.out.println(perent.getChildren());
-        Family family = new Family();
-//        for(Person person : people){
-//            family.add(person);
-//        }
-
-        family.add(people.get(0));
-        family.add(people.get(1), people.get(2));
-
-
-        Person mike = family.get("Mike Tyson");
-        System.out.println(mike);
     }
 }
