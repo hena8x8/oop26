@@ -1,6 +1,8 @@
 import com.sun.jdi.connect.Connector;
 import music.Song;
 import org.junit.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.MethodSource;
 import org.junit.runners.Parameterized;
 
 import java.sql.SQLException;
@@ -8,6 +10,7 @@ import java.util.Optional;
 import java.util.stream.Stream;
 
 import static org.junit.Assert.assertTrue;
+import static org.junit.jupiter.params.provider.Arguments.arguments;
 
 public class SongTest {
     @Test
